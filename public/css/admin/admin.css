@@ -875,6 +875,7 @@ input[type="file"] {
 }
 
 /* ================= MOBILE RESPONSIVE ================= */
+
 .mobile-menu-btn {
     display: none;
     font-size: 22px;
@@ -888,41 +889,73 @@ input[type="file"] {
     cursor: pointer;
 }
 
+/* Overlay when sidebar opens */
+.sidebar-overlay {
+    display: none;
+}
+
 @media (max-width: 1024px) {
 
-    /* Sidebar hidden by default */
+    /* ===== Sidebar ===== */
     .sidebar {
         transform: translateX(-100%);
         position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
         width: 280px;
         z-index: 1001;
     }
 
-    /* When opened */
     .sidebar.mobile-open {
         transform: translateX(0);
     }
 
-    /* Top nav full width */
+    /* ===== Overlay ===== */
+    .sidebar-overlay.active {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.4);
+        z-index: 1000;
+    }
+
+    /* ===== Top Nav Fix ===== */
     .top-nav {
-        left: 1.5rem;
-        right: 1.5rem;
+        left: 1rem !important;
+        right: 1rem !important;
+        width: auto;
         padding: 0 1rem;
     }
 
-    /* Main content full width */
+    /* ===== Main Content Fix ===== */
     .main-content {
-        margin-left: 0;
-        padding-top: 7rem;
+        margin-left: 0 !important;
+        width: 100%;
+        padding: 6.5rem 1.2rem 2rem;
     }
 
-    /* Show mobile button */
+    /* ===== Show Mobile Toggle ===== */
     .mobile-menu-btn {
         display: flex;
     }
 
-    /* Hide breadcrumb for clean UI */
+    /* Optional: hide breadcrumb */
     .breadcrumb {
         display: none;
     }
 }
+
+/* ================= GLOBAL TABLE RESPONSIVE FIX ================= */
+
+@media (max-width: 1024px) {
+
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+}
+
