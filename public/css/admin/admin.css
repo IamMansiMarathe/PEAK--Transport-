@@ -176,16 +176,30 @@ body {
 }
 
 /* ================= MAIN CONTENT ================= */
-.main-content {
+/* .main-content {
     margin-left: var(--sidebar-width);
     padding: 8rem 2rem 2rem;
     width: 100%;
     transition: var(--transition-smooth);
+} */
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 8rem 2rem 2rem;
+    width: calc(100% - var(--sidebar-width));
+    transition: var(--transition-smooth);
 }
+
+
+/* .sidebar.collapsed ~ .main-content {
+    margin-left: var(--sidebar-collapsed);
+} */
 
 .sidebar.collapsed ~ .main-content {
     margin-left: var(--sidebar-collapsed);
+    width: calc(100% - var(--sidebar-collapsed));
 }
+
 
 /* ================= GRID & CARDS ================= */
 .section-grid {
@@ -948,7 +962,7 @@ input[type="file"] {
 
 /* ================= GLOBAL TABLE RESPONSIVE FIX ================= */
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
 
     table {
         display: block;
@@ -957,5 +971,20 @@ input[type="file"] {
         white-space: nowrap;
     }
 
-}
+} */
 
+
+
+/* ===== Universal Table Scroll Wrapper (Safe Fix) ===== */
+
+@media (max-width: 1024px) {
+
+    .main-content {
+        overflow-x: auto;
+    }
+
+    .main-content table {
+        min-width: 700px;
+    }
+
+}
